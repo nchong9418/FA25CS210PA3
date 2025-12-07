@@ -143,22 +143,22 @@ void printPath(pair<int,int> exitcell,
      	int nr = r + dr[i];  //Looking at dr & dc I think of a game controller
 	int nc = c + dc[i]; //Which is why I use an for loop as I check each one
 
-	if (nr < 0 || nr >= maze.size() || nc < 0 || nc >= maze[0].size()) {
+	if (nr < 0 || nr >= maze.size() || nc < 0 || nc >= maze[0].size()) { //check to stop the console from complaning, copied code from up top but replaced body. 
 		continue;
 	}
-	if (maze[nr][nc] == 1 || visited[nr][nc]) {
+	if (maze[nr][nc] == 1 || visited[nr][nc]) { //Console was getting angry that these werent checked, its not physicslly possible I think, maybe its out of scope for the check outside of the for loop. so it had to be done again. This let me actually compile and run the code without any issue. 
 		continue;
 	}
 
-	//Do the thingy that the README says
+	//Do the thingy that the README say
 	parent_r[nr][nc] = r;
 	parent_c[nr][nc] = c;
 
-	if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
+	if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c)) {//Check the path if it works itll get added to the recursive stack
 		return true;
 	}
      }
-	return false; //stops the console complaints, also indicates dead end
+	return false; //stops the console complaints, also indicates dead end (none of the paths worked
 }
 
 
